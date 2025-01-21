@@ -4,7 +4,11 @@ export function InputField({ type, id, text, defaultV, className }) {
   return (
     <p className={className}>
       <label htmlFor={id}>{text}</label>
-      <input type={type} id={id} name={id} placeholder={defaultV} />
+      {type === 'textarea' ? (
+        <textarea id={id} name={id} placeholder={defaultV}></textarea>
+      ) : (
+        <input type={type} id={id} name={id} placeholder={defaultV} />
+      )}
     </p>
   );
 }
@@ -72,13 +76,20 @@ export default function General() {
             text='Portfolio'
             defaultV='https://github.com/username'
           />
-          <p className={styles.about_container}>
+          <InputField
+            className={styles.input_label + ' ' + styles.about_textarea}
+            type='textarea'
+            id='about'
+            text='About'
+            defaultV='E.g.: Motivated developer with multiple years of experience at FAANG companies...'
+          />
+          {/* <p className={styles.about_container}>
             <label htmlFor='text_area'>About</label>
             <textarea
               className={styles.text_about}
               placeholder='E.g.: Motivated developer with multiple years of experience at FAANG companies...'
             ></textarea>
-          </p>
+          </p> */}
           <div className={styles.input_file}>
             <InputField
               className={styles.input_label}

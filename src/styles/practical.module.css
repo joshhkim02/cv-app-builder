@@ -9,18 +9,70 @@
 .div_line {
   border: 1px solid gray;
   height: 1px;
-  margin-bottom: 10px;
 }
 
 .job_experience_form {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr 2fr;
   grid-template-areas:
-    'company company role'
-    'startDate endDate location'
-    'description description description';
-  padding: 10px;
+    'company company role role'
+    'startDate endDate location location'
+    'description description description description';
+  padding-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  gap: 10px;
+}
+
+.input_label input {
+  display: flex;
+  width: 100%;
+  border: none;
   background-color: rgb(231, 231, 231);
   border-radius: 8px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 4vh;
+  font-size: 0.8rem;
+}
+
+.input_label label {
+  font-size: 0.9rem;
+}
+
+.company {
+  grid-area: company;
+}
+
+.role {
+  grid-area: role;
+}
+
+.start {
+  grid-area: startDate;
+}
+
+.end {
+  grid-area: endDate;
+}
+
+.location {
+  grid-area: location;
+}
+
+.description {
+  grid-area: description;
+}
+
+.description textarea {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(231, 231, 231);
+  border-radius: 8px;
+  padding: 10px;
+  border: none;
+  font-size: 0.8rem;
+  resize: none;
 }
