@@ -53,21 +53,21 @@ Write clean, efficient, and well-documented code in languages such as Python, Ja
   );
 }
 
-function JobExperienceDiv({ role, company, start, end }) {
+export function JobExperienceDiv({ role, company, start, end }) {
   return (
     <div className={styles.job_div_container}>
-      <div className={styles.job_holder}>
-        <p className={styles.job_experience}>
+      <div className={styles.job_holder_container}>
+        <p className={styles.job_experience_p}>
           {role} at {company}
         </p>
         <p>
           {start} - {end}
         </p>
       </div>
-      <div className={styles.edit_img}>
+      <div className={styles.edit_img_container}>
         <img
           src='src/assets/edit_img.png'
-          alt='Edit employment history button'
+          alt='Edit history button'
           height='40'
           width='40'
         ></img>

@@ -83,13 +83,6 @@ export default function General() {
             text='About'
             defaultV='E.g.: Motivated developer with multiple years of experience at FAANG companies...'
           />
-          {/* <p className={styles.about_container}>
-            <label htmlFor='text_area'>About</label>
-            <textarea
-              className={styles.text_about}
-              placeholder='E.g.: Motivated developer with multiple years of experience at FAANG companies...'
-            ></textarea>
-          </p> */}
           <div className={styles.input_file}>
             <InputField
               className={styles.input_label}
