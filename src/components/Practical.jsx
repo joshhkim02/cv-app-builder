@@ -53,6 +53,29 @@ Write clean, efficient, and well-documented code in languages such as Python, Ja
   );
 }
 
+function JobExperienceDiv({ role, company, start, end }) {
+  return (
+    <div className={styles.job_div_container}>
+      <div className={styles.job_holder}>
+        <p className={styles.job_experience}>
+          {role} at {company}
+        </p>
+        <p>
+          {start} - {end}
+        </p>
+      </div>
+      <div className={styles.edit_img}>
+        <img
+          src='src/assets/edit_img.png'
+          alt='Edit employment history button'
+          height='40'
+          width='40'
+        ></img>
+      </div>
+    </div>
+  );
+}
+
 export default function Practical() {
   return (
     <>
@@ -60,6 +83,12 @@ export default function Practical() {
         Employment History
         <div className={styles.div_line}></div>
         <JobExperienceForm />
+        <JobExperienceDiv
+          role='Software Developer'
+          company='Google'
+          start='10/2/2020'
+          end='7/1/2024'
+        />
       </h1>
     </>
   );

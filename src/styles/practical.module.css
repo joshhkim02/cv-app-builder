@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'roboto-semibold';
+  src: url('../fonts/Roboto-SemiBold.ttf') format('truetype');
+}
+
 .h1 {
   color: black;
   font-size: 1.6rem;
@@ -75,4 +80,34 @@
   border: none;
   font-size: 0.8rem;
   resize: none;
+}
+
+.job_div_container {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
+  /* Code to remove after? */
+  /* ------------------------------ */
+  margin-top: 30px;
+}
+
+.job_experience {
+  font-family: 'roboto-semibold', Arial, sans-serif !important;
+}
+
+.edit_img {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.job_holder {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
