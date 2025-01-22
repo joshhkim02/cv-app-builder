@@ -1,19 +1,43 @@
+import { useState } from 'react';
 import styles from '../styles/general.module.css';
 
-export function InputField({ type, id, text, defaultV, className }) {
+export function InputField({
+  type,
+  id,
+  text,
+  defaultV,
+  className,
+  value,
+  onChange,
+}) {
   return (
     <p className={className}>
       <label htmlFor={id}>{text}</label>
       {type === 'textarea' ? (
-        <textarea id={id} name={id} placeholder={defaultV}></textarea>
+        <textarea
+          id={id}
+          name={id}
+          placeholder={defaultV}
+          value={value}
+          onChange={onChange}
+        ></textarea>
       ) : (
-        <input type={type} id={id} name={id} placeholder={defaultV} />
+        <input
+          type={type}
+          id={id}
+          name={id}
+          placeholder={defaultV}
+          value={value}
+          onChange={onChange}
+        />
       )}
     </p>
   );
 }
 
 export default function General() {
+  const [firstName, setFirstName] = useState('John');
+
   return (
     <>
       <h1 className={styles.h1}>
@@ -26,6 +50,8 @@ export default function General() {
             id='first_name'
             text='First Name'
             defaultV='John'
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <InputField
             className={styles.input_label}
@@ -91,6 +117,13 @@ export default function General() {
               text='Profile Picture'
             />
           </div>
+          {/* Display the updated value
+          <div className={styles.preview}>
+            <h2>Live Preview:</h2>
+            <p>
+              First Name: <strong>{firstName}</strong>
+            </p>
+          </div> */}
         </form>
       </h1>
     </>
