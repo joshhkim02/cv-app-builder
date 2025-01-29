@@ -2,7 +2,7 @@
   display: grid;
   position: fixed;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   grid-template-columns: 1fr;
   grid-template-rows: 0.1fr 2fr;
@@ -10,7 +10,7 @@
     'navbar'
     'resume';
   background-color: rgb(166, 165, 165);
-}
+]}
 
 .pdf_navbar {
   display: flex;
@@ -24,14 +24,18 @@
 
 #resume_page {
   background-color: rgb(255, 255, 255);
+  height: 90vh;
+  width: 45%;
   grid-area: resume;
   top: 50%;
   left: 50%;
-  height: 90vh;
-  width: 45%;
-  transform: translate(5%, 3%);
+  transform: translate(5.5%, 3%);
 }
 
 .download_resume:hover {
   cursor: pointer;
+}
+
+.download_resume {
+  object-fit: contain;
 }
