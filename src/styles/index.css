@@ -71,17 +71,13 @@ h6 {
   display: grid;
   grid-template-columns: 2fr 2fr;
   grid-template-areas: 'input form';
-  /* gap: 20px; */
 }
 
 .input-container {
   grid-area: input;
-  /* justify-content: center; */
   align-items: stretch;
-  border: 1px solid black;
 }
 
 .form-container {
   grid-area: form;
-  border: 1px solid black;
 }
