@@ -1,39 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/general.module.css';
-
-export function InputField({
-  type,
-  id,
-  text,
-  defaultV,
-  className,
-  value,
-  onChange,
-}) {
-  return (
-    <p className={className}>
-      <label htmlFor={id}>{text}</label>
-      {type === 'textarea' ? (
-        <textarea
-          id={id}
-          name={id}
-          placeholder={defaultV}
-          value={value}
-          onChange={onChange}
-        ></textarea>
-      ) : (
-        <input
-          type={type}
-          id={id}
-          name={id}
-          placeholder={defaultV}
-          value={value}
-          onChange={onChange}
-        />
-      )}
-    </p>
-  );
-}
+import InputField from './InputField.jsx';
 
 export default function General() {
   const [firstName, setFirstName] = useState('John');

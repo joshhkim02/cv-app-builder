@@ -1,5 +1,5 @@
 import styles from '../styles/practical.module.css';
-import { InputField } from './General.jsx';
+import InputField from './InputField.jsx';
 
 function JobExperienceForm() {
   return (

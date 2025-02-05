@@ -1,6 +1,6 @@
 import styles from '../styles/education.module.css';
 import { JobExperienceDiv } from './Practical.jsx';
-import { InputField } from './General.jsx';
+import InputField from './InputField.jsx';
 
 function EducationExperienceForm() {
   return (
