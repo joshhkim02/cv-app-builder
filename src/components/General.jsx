@@ -1,9 +1,14 @@
-import { useState } from 'react';
 import styles from '../styles/general.module.css';
 import InputField from './InputField.jsx';
 
-export default function General() {
-  const [firstName, setFirstName] = useState('John');
+export default function General({ personalDetails, setPersonalDetails }) {
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setPersonalDetails((prevDetails) => ({
+      ...prevDetails,
+      [id]: value,
+    }));
+  };
 
   return (
     <>
@@ -14,18 +19,20 @@ export default function General() {
           <InputField
             className={styles.input_label}
             type='text'
-            id='first_name'
+            id='firstName'
             text='First Name'
             defaultV='John'
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={personalDetails.firstName}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
             type='text'
-            id='last_name'
+            id='lastName'
             text='Last Name'
             defaultV='Doe'
+            value={personalDetails.lastName}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
@@ -33,13 +40,17 @@ export default function General() {
             id='email'
             text='Email'
             defaultV='johndoe@gmail.com'
+            value={personalDetails.email}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
             type='text'
-            id='phone_num'
+            id='phoneNum'
             text='Phone Number'
             defaultV='123-456-7890'
+            value={personalDetails.phoneNum}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
@@ -47,6 +58,8 @@ export default function General() {
             id='address'
             text='Address'
             defaultV='230 Same St, Los Angeles CA, 90210'
+            value={personalDetails.address}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
@@ -54,6 +67,8 @@ export default function General() {
             id='occupation'
             text='Occupation'
             defaultV='Software Engineer'
+            value={personalDetails.occupation}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
@@ -61,6 +76,8 @@ export default function General() {
             id='linkedin'
             text='LinkedIn'
             defaultV='https://www.linkedin.com/in/username'
+            value={personalDetails.linkedin}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
@@ -68,6 +85,8 @@ export default function General() {
             id='portfolio'
             text='Portfolio'
             defaultV='https://github.com/username'
+            value={personalDetails.portfolio}
+            onChange={handleChange}
           />
           <InputField
             className={styles.input_label + ' ' + styles.about_textarea}
@@ -75,6 +94,8 @@ export default function General() {
             id='about'
             text='About'
             defaultV='E.g.: Motivated developer with multiple years of experience at FAANG companies...'
+            value={personalDetails.about}
+            onChange={handleChange}
           />
           <div className={styles.input_file}>
             <InputField
@@ -84,13 +105,6 @@ export default function General() {
               text='Profile Picture'
             />
           </div>
-          {/* Display the updated value
-          <div className={styles.preview}>
-            <h2>Live Preview:</h2>
-            <p>
-              First Name: <strong>{firstName}</strong>
-            </p>
-          </div> */}
         </form>
       </h1>
     </>

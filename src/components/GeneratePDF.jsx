@@ -1,7 +1,7 @@
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-export default function GeneratePDF() {
+export default function GeneratePDF({ personalDetails }) {
   // Download PDF Function
   const exportPDF = () => {
     // Select the element we want to screenshot
@@ -18,7 +18,7 @@ export default function GeneratePDF() {
       const imgData = canvas.toDataURL('img/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('test.pdf');
+      pdf.save('resume.pdf');
     });
   };
 
@@ -35,7 +35,15 @@ export default function GeneratePDF() {
         ></img>
       </div>
       <div id='resume_page'>
-        <div className='test'>test</div>
+        <p>{personalDetails.firstName || 'First Name'}</p>
+        <p>{personalDetails.lastName || 'Last Name'}</p>
+        <p>{personalDetails.email || 'Email'}</p>
+        <p>{personalDetails.phoneNum || 'Phone Number'}</p>
+        <p>{personalDetails.address || 'Address'}</p>
+        <p>{personalDetails.occupation || 'Occupation'}</p>
+        <p>{personalDetails.linkedin || 'LinkedIn'}</p>
+        <p>{personalDetails.portfolio || 'Portfolio'}</p>
+        <p>{personalDetails.about || 'About'}</p>
       </div>
     </div>
   );
