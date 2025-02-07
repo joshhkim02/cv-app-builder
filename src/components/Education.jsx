@@ -1,5 +1,5 @@
 import styles from '../styles/education.module.css';
-import { JobExperienceDiv } from './Practical.jsx';
+// import { JobExperienceDiv } from './Practical.jsx';
 import InputField from './InputField.jsx';
 
 function EducationExperienceForm() {
@@ -60,12 +60,12 @@ export default function Education() {
         Education History
         <div className={styles.div_line}></div>
         <EducationExperienceForm />
-        <JobExperienceDiv
+        {/* <JobExperienceDiv
           role='BSc. Computer Science'
           company='California State University, Pomona'
           start='8/1/2020'
           end='5/1/2024'
-        />
+        /> */}
       </h1>
     </>
   );

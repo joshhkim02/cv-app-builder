@@ -18,6 +18,16 @@ export default function App() {
     portfolio: '',
     about: '',
   });
+
+  const [jobExperience, setJobExperience] = useState({
+    company_name: '',
+    job_title: '',
+    start_date: '',
+    end_date: '',
+    job_location: '',
+    job_duties: '',
+  });
+
   return (
     <div className='parent-container'>
       <div className='input-container'>
@@ -26,11 +36,17 @@ export default function App() {
           personalDetails={personalDetails}
           setPersonalDetails={setPersonalDetails}
         />
-        <Practical />
+        <Practical
+          jobExperience={jobExperience}
+          setJobExperience={setJobExperience}
+        />
         <Education />
       </div>
       <div className='form-container'>
-        <GeneratePDF personalDetails={personalDetails} />
+        <GeneratePDF
+          personalDetails={personalDetails}
+          jobExperience={jobExperience}
+        />
       </div>
     </div>
   );

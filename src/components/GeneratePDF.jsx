@@ -1,14 +1,12 @@
+// GeneratePDF.jsx
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-export default function GeneratePDF({ personalDetails }) {
+export default function GeneratePDF({ personalDetails, jobExperience }) {
   // Download PDF Function
   const exportPDF = () => {
-    // Select the element we want to screenshot
     const input = document.getElementById('resume_page');
-    // Render the element using html2canvas
     html2canvas(input, {
-      // Optional arguments
       logging: true,
       letterRendering: 1,
       useCORS: true,
@@ -32,9 +30,10 @@ export default function GeneratePDF({ personalDetails }) {
           height='30'
           width='30'
           onClick={exportPDF}
-        ></img>
+        />
       </div>
       <div id='resume_page'>
+        {/* Personal Details */}
         <p>{personalDetails.firstName || 'First Name'}</p>
         <p>{personalDetails.lastName || 'Last Name'}</p>
         <p>{personalDetails.email || 'Email'}</p>
@@ -44,6 +43,14 @@ export default function GeneratePDF({ personalDetails }) {
         <p>{personalDetails.linkedin || 'LinkedIn'}</p>
         <p>{personalDetails.portfolio || 'Portfolio'}</p>
         <p>{personalDetails.about || 'About'}</p>
+
+        {/* Job Experience Details */}
+        <p>{jobExperience.job_title || 'Job Title'}</p>
+        <p>{jobExperience.company_name || 'Company Name'}</p>
+        <p>{jobExperience.start_date || 'Start Date'}</p>
+        <p>{jobExperience.end_date || 'End Date'}</p>
+        <p>{jobExperience.job_location || 'Job Location'}</p>
+        <p>{jobExperience.job_duties || 'Job Duties'}</p>
       </div>
     </div>
   );

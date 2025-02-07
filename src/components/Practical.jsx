@@ -1,67 +1,88 @@
+// Practical.jsx
 import styles from '../styles/practical.module.css';
 import InputField from './InputField.jsx';
 
-function JobExperienceForm() {
+function JobExperienceForm({ jobExperience, setJobExperience }) {
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setJobExperience((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
   return (
     <form className={styles.job_experience_form}>
       <InputField
-        className={styles.input_label + ' ' + styles.company}
+        className={`${styles.input_label} ${styles.company}`}
         type='text'
         id='company_name'
         text='Company'
         defaultV='Google'
+        value={jobExperience.company_name}
+        onChange={handleChange}
       />
       <InputField
-        className={styles.input_label + ' ' + styles.role}
+        className={`${styles.input_label} ${styles.role}`}
         type='text'
         id='job_title'
         text='Job Title'
         defaultV='Software Developer'
+        value={jobExperience.job_title}
+        onChange={handleChange}
       />
       <InputField
-        className={styles.input_label + ' ' + styles.start}
+        className={`${styles.input_label} ${styles.start}`}
         type='text'
         id='start_date'
         text='Start Date'
-        defaultV='10/10/20'
+        defaultV='10/10/2020'
+        value={jobExperience.start_date}
+        onChange={handleChange}
       />
       <InputField
-        className={styles.input_label + ' ' + styles.end}
+        className={`${styles.input_label} ${styles.end}`}
         type='text'
         id='end_date'
         text='End Date'
-        defaultV='12/01/25'
+        defaultV='7/1/2024'
+        value={jobExperience.end_date}
+        onChange={handleChange}
       />
       <InputField
-        className={styles.input_label + ' ' + styles.location}
+        className={`${styles.input_label} ${styles.location}`}
         type='text'
         id='job_location'
         text='Location'
-        defaultV='San Jose, CA'
+        defaultV='San Jose, California'
+        value={jobExperience.job_location}
+        onChange={handleChange}
       />
       <InputField
-        className={styles.input_label + ' ' + styles.description}
+        className={`${styles.input_label} ${styles.description}`}
         type='textarea'
         id='job_duties'
         text='Description'
-        defaultV='E.g.:
-Design, develop, and maintain scalable software applications following best practices.
+        defaultV='Ex: Design, develop, and maintain scalable software applications following best practices.
 Collaborate with product managers, designers, and other engineers to understand requirements and translate them into technical solutions.
-Write clean, efficient, and well-documented code in languages such as Python, Java, or JavaScript.'
+Write clean, efficient, and well-documented code.'
+        value={jobExperience.job_duties}
+        onChange={handleChange}
       />
     </form>
   );
 }
 
-export function JobExperienceDiv({ role, company, start, end }) {
+export function JobExperienceDiv({ jobExperience }) {
   return (
     <div className={styles.job_div_container}>
       <div className={styles.job_holder_container}>
         <p className={styles.job_experience_p}>
-          {role} at {company}
+          {jobExperience.job_title} at
+          {jobExperience.company_name}
         </p>
         <p>
-          {start} - {end}
+          {jobExperience.start_date} - {jobExperience.end_date}
         </p>
       </div>
       <div className={styles.edit_img_container}>
@@ -70,25 +91,23 @@ export function JobExperienceDiv({ role, company, start, end }) {
           alt='Edit history button'
           height='40'
           width='40'
-        ></img>
+        />
       </div>
     </div>
   );
 }
 
-export default function Practical() {
+export default function Practical({ jobExperience, setJobExperience }) {
   return (
     <>
       <h1 className={styles.h1}>
         Employment History
         <div className={styles.div_line}></div>
-        <JobExperienceForm />
-        <JobExperienceDiv
-          role='Software Developer'
-          company='Google'
-          start='10/2/2020'
-          end='7/1/2024'
+        <JobExperienceForm
+          jobExperience={jobExperience}
+          setJobExperience={setJobExperience}
         />
+        <JobExperienceDiv jobExperience={jobExperience} />
       </h1>
     </>
   );
