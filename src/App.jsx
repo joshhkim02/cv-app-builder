@@ -20,8 +20,8 @@ export default function App() {
   });
 
   const [jobExperience, setJobExperience] = useState({
-    company_name: '',
     job_title: '',
+    company_name: '',
     start_date: '',
     end_date: '',
     job_location: '',

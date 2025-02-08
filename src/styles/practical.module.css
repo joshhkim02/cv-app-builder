@@ -21,7 +21,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr 1fr 2fr;
   grid-template-areas:
-    'company company role role'
+    'role role company company'
     'startDate endDate location location'
     'description description description description';
   padding-bottom: 20px;

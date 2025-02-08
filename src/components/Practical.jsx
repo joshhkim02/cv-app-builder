@@ -1,4 +1,5 @@
 // Practical.jsx
+import { useState } from 'react';
 import styles from '../styles/practical.module.css';
 import InputField from './InputField.jsx';
 
@@ -14,21 +15,21 @@ function JobExperienceForm({ jobExperience, setJobExperience }) {
   return (
     <form className={styles.job_experience_form}>
       <InputField
-        className={`${styles.input_label} ${styles.company}`}
-        type='text'
-        id='company_name'
-        text='Company'
-        defaultV='Google'
-        value={jobExperience.company_name}
-        onChange={handleChange}
-      />
-      <InputField
         className={`${styles.input_label} ${styles.role}`}
         type='text'
         id='job_title'
         text='Job Title'
         defaultV='Software Developer'
         value={jobExperience.job_title}
+        onChange={handleChange}
+      />
+      <InputField
+        className={`${styles.input_label} ${styles.company}`}
+        type='text'
+        id='company_name'
+        text='Company'
+        defaultV='Google'
+        value={jobExperience.company_name}
         onChange={handleChange}
       />
       <InputField
@@ -73,12 +74,15 @@ Write clean, efficient, and well-documented code.'
   );
 }
 
-export function JobExperienceDiv({ jobExperience }) {
+export function JobExperienceDiv({ jobExperience, setShowElement }) {
+  const handleVisibility = () => {
+    setShowElement((visible) => !visible);
+  };
   return (
     <div className={styles.job_div_container}>
       <div className={styles.job_holder_container}>
         <p className={styles.job_experience_p}>
-          {jobExperience.job_title} at
+          {jobExperience.job_title} at {''}
           {jobExperience.company_name}
         </p>
         <p>
@@ -87,10 +91,12 @@ export function JobExperienceDiv({ jobExperience }) {
       </div>
       <div className={styles.edit_img_container}>
         <img
+          className='edit_experience_img'
           src='src/assets/edit_img.png'
           alt='Edit history button'
           height='40'
           width='40'
+          onClick={handleVisibility}
         />
       </div>
     </div>
@@ -98,16 +104,23 @@ export function JobExperienceDiv({ jobExperience }) {
 }
 
 export default function Practical({ jobExperience, setJobExperience }) {
+  const [showElement, setShowElement] = useState(true);
+
   return (
     <>
       <h1 className={styles.h1}>
         Employment History
         <div className={styles.div_line}></div>
-        <JobExperienceForm
+        {showElement && (
+          <JobExperienceForm
+            jobExperience={jobExperience}
+            setJobExperience={setJobExperience}
+          />
+        )}
+        <JobExperienceDiv
           jobExperience={jobExperience}
-          setJobExperience={setJobExperience}
+          setShowElement={setShowElement}
         />
-        <JobExperienceDiv jobExperience={jobExperience} />
       </h1>
     </>
   );

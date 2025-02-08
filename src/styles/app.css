@@ -39,3 +39,7 @@
 .download_resume {
   object-fit: contain;
 }
+
+.edit_experience_img:hover {
+  cursor: pointer;
+}
