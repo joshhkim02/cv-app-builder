@@ -45,12 +45,21 @@ export default function GeneratePDF({ personalDetails, jobExperience }) {
         <p>{personalDetails.about || 'About'}</p>
 
         {/* Job Experience Details */}
-        <p>{jobExperience.job_title || 'Job Title'}</p>
-        <p>{jobExperience.company_name || 'Company Name'}</p>
-        <p>{jobExperience.start_date || 'Start Date'}</p>
-        <p>{jobExperience.end_date || 'End Date'}</p>
-        <p>{jobExperience.job_location || 'Job Location'}</p>
-        <p>{jobExperience.job_duties || 'Job Duties'}</p>
+        {jobExperience && jobExperience.length > 0 ? (
+          jobExperience.map((job, index) => (
+            <div key={index}>
+              <p>{job.job_title || 'Job Title'}</p>
+              <p>{job.company_name || 'Company Name'}</p>
+              <p>
+                {job.start_date || 'Start Date'} - {job.end_date || 'End Date'}
+              </p>
+              <p>{job.job_location || 'Job Location'}</p>
+              <p>{job.job_duties || 'Job Duties'}</p>
+            </div>
+          ))
+        ) : (
+          <p>No job experience available.</p>
+        )}
       </div>
     </div>
   );

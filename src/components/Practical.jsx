@@ -3,28 +3,20 @@ import { useState } from 'react';
 import styles from '../styles/practical.module.css';
 import InputField from './InputField.jsx';
 
-function JobExperienceForm({ jobExperience, setJobExperience }) {
+function JobExperienceForm({
+  jobExperience,
+  updateJobExperience,
+  handleSubmit,
+  handleCancel,
+}) {
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setJobExperience((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('submitted');
-  };
-
-  const handleCancel = (e) => {
-    e.preventDefault();
-    alert('cancelled');
+    updateJobExperience({ [id]: value });
   };
 
   return (
     <div>
-      <form className={styles.job_experience_form}>
+      <form className={styles.job_experience_form} onSubmit={handleSubmit}>
         <InputField
           className={`${styles.input_label} ${styles.role}`}
           type='text'
@@ -82,11 +74,7 @@ Write clean, efficient, and well-documented code.'
           onChange={handleChange}
         />
         <div className={styles.buttonContainer}>
-          <button
-            type='submit'
-            className={styles.submitButton}
-            onClick={handleSubmit}
-          >
+          <button type='submit' className={styles.submitButton}>
             Submit
           </button>
           <button
@@ -102,10 +90,7 @@ Write clean, efficient, and well-documented code.'
   );
 }
 
-export function JobExperienceDiv({ jobExperience, setShowElement }) {
-  const handleVisibility = () => {
-    setShowElement((visible) => !visible);
-  };
+export function JobExperienceDiv({ jobExperience, handleEdit }) {
   return (
     <div className={styles.job_div_container}>
       <div className={styles.job_holder_container}>
@@ -124,7 +109,7 @@ export function JobExperienceDiv({ jobExperience, setShowElement }) {
           alt='Edit history button'
           height='40'
           width='40'
-          onClick={handleVisibility}
+          onClick={handleEdit}
         />
       </div>
     </div>
@@ -132,10 +117,46 @@ export function JobExperienceDiv({ jobExperience, setShowElement }) {
 }
 
 export default function Practical({ jobExperience, setJobExperience }) {
-  const [showElement, setShowElement] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
+
+  const [tempJob, setTempJob] = useState({});
+
+  const handleEdit = (index) => {
+    setEditIndex(index);
+    setTempJob({ ...jobExperience[index] });
+  };
+
+  const updateTempJob = (updatedFields) => {
+    setTempJob((prev) => ({ ...prev, ...updatedFields }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setJobExperience((prev) => {
+      const newExperience = [...prev];
+      newExperience[editIndex] = { ...tempJob };
+      return newExperience;
+    });
+    setEditIndex(null);
+  };
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    setEditIndex(null);
+  };
 
   const handleAddEmployment = () => {
-    alert('add employment');
+    const newJob = {
+      job_title: '',
+      company_name: '',
+      start_date: '',
+      end_date: '',
+      job_location: '',
+      job_duties: '',
+    };
+    setJobExperience((prev) => [...prev, newJob]);
+    setEditIndex(jobExperience.length);
+    setTempJob(newJob);
   };
 
   return (
@@ -143,16 +164,23 @@ export default function Practical({ jobExperience, setJobExperience }) {
       <h1 className={styles.h1}>
         Employment History
         <div className={styles.div_line}></div>
-        {showElement && (
-          <JobExperienceForm
-            jobExperience={jobExperience}
-            setJobExperience={setJobExperience}
-          />
-        )}
-        <JobExperienceDiv
-          jobExperience={jobExperience}
-          setShowElement={setShowElement}
-        />
+        {jobExperience.map((job, index) => (
+          <div key={index}>
+            {editIndex === index ? (
+              <JobExperienceForm
+                jobExperience={tempJob}
+                updateJobExperience={updateTempJob}
+                handleSubmit={handleSubmit}
+                handleCancel={handleCancel}
+              />
+            ) : (
+              <JobExperienceDiv
+                jobExperience={job}
+                handleEdit={() => handleEdit(index)}
+              />
+            )}
+          </div>
+        ))}
         <div className={styles.addContainer}>
           <button
             className={styles.add_employment_btn}

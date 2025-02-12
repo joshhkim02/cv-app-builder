@@ -19,14 +19,16 @@ export default function App() {
     about: '',
   });
 
-  const [jobExperience, setJobExperience] = useState({
-    job_title: '',
-    company_name: '',
-    start_date: '',
-    end_date: '',
-    job_location: '',
-    job_duties: '',
-  });
+  const [jobExperience, setJobExperience] = useState([
+    {
+      job_title: 'Software Developer',
+      company_name: 'Google',
+      start_date: '10/10/2020',
+      end_date: '7/1/2024',
+      job_location: 'San Jose, California',
+      job_duties: 'Code',
+    },
+  ]);
 
   return (
     <div className='parent-container'>
