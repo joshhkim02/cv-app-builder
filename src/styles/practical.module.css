@@ -19,12 +19,11 @@
 .job_experience_form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr 2fr;
+  grid-template-rows: 0.75fr 0.75fr 1.5fr 0.5fr;
   grid-template-areas:
     'role role company company'
     'startDate endDate location location'
     'description description description description';
-  padding-bottom: 20px;
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
   gap: 10px;
@@ -37,8 +36,6 @@
   background-color: rgb(231, 231, 231);
   border-radius: 8px;
   padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
   height: 4vh;
   font-size: 0.8rem;
 }
@@ -92,7 +89,7 @@
   margin: 0 auto;
   /* Code to remove after? */
   /* ------------------------------ */
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .job_experience_p {
@@ -110,4 +107,33 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.buttonContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 0;
+  margin-top: 40px;
+}
+
+.submitButton {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancelButton {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

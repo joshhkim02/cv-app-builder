@@ -12,65 +12,93 @@ function JobExperienceForm({ jobExperience, setJobExperience }) {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('submitted');
+  };
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    alert('cancelled');
+  };
+
   return (
-    <form className={styles.job_experience_form}>
-      <InputField
-        className={`${styles.input_label} ${styles.role}`}
-        type='text'
-        id='job_title'
-        text='Job Title'
-        defaultV='Software Developer'
-        value={jobExperience.job_title}
-        onChange={handleChange}
-      />
-      <InputField
-        className={`${styles.input_label} ${styles.company}`}
-        type='text'
-        id='company_name'
-        text='Company'
-        defaultV='Google'
-        value={jobExperience.company_name}
-        onChange={handleChange}
-      />
-      <InputField
-        className={`${styles.input_label} ${styles.start}`}
-        type='text'
-        id='start_date'
-        text='Start Date'
-        defaultV='10/10/2020'
-        value={jobExperience.start_date}
-        onChange={handleChange}
-      />
-      <InputField
-        className={`${styles.input_label} ${styles.end}`}
-        type='text'
-        id='end_date'
-        text='End Date'
-        defaultV='7/1/2024'
-        value={jobExperience.end_date}
-        onChange={handleChange}
-      />
-      <InputField
-        className={`${styles.input_label} ${styles.location}`}
-        type='text'
-        id='job_location'
-        text='Location'
-        defaultV='San Jose, California'
-        value={jobExperience.job_location}
-        onChange={handleChange}
-      />
-      <InputField
-        className={`${styles.input_label} ${styles.description}`}
-        type='textarea'
-        id='job_duties'
-        text='Description'
-        defaultV='Ex: Design, develop, and maintain scalable software applications following best practices.
+    <div>
+      <form className={styles.job_experience_form}>
+        <InputField
+          className={`${styles.input_label} ${styles.role}`}
+          type='text'
+          id='job_title'
+          text='Job Title'
+          defaultV='Software Developer'
+          value={jobExperience.job_title}
+          onChange={handleChange}
+        />
+        <InputField
+          className={`${styles.input_label} ${styles.company}`}
+          type='text'
+          id='company_name'
+          text='Company'
+          defaultV='Google'
+          value={jobExperience.company_name}
+          onChange={handleChange}
+        />
+        <InputField
+          className={`${styles.input_label} ${styles.start}`}
+          type='text'
+          id='start_date'
+          text='Start Date'
+          defaultV='10/10/2020'
+          value={jobExperience.start_date}
+          onChange={handleChange}
+        />
+        <InputField
+          className={`${styles.input_label} ${styles.end}`}
+          type='text'
+          id='end_date'
+          text='End Date'
+          defaultV='7/1/2024'
+          value={jobExperience.end_date}
+          onChange={handleChange}
+        />
+        <InputField
+          className={`${styles.input_label} ${styles.location}`}
+          type='text'
+          id='job_location'
+          text='Location'
+          defaultV='San Jose, California'
+          value={jobExperience.job_location}
+          onChange={handleChange}
+        />
+        <InputField
+          className={`${styles.input_label} ${styles.description}`}
+          type='textarea'
+          id='job_duties'
+          text='Description'
+          defaultV='Ex: Design, develop, and maintain scalable software applications following best practices.
 Collaborate with product managers, designers, and other engineers to understand requirements and translate them into technical solutions.
 Write clean, efficient, and well-documented code.'
-        value={jobExperience.job_duties}
-        onChange={handleChange}
-      />
-    </form>
+          value={jobExperience.job_duties}
+          onChange={handleChange}
+        />
+        <div className={styles.buttonContainer}>
+          <button
+            type='submit'
+            className={styles.submitButton}
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+          <button
+            type='button'
+            className={styles.cancelButton}
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
