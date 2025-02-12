@@ -132,7 +132,11 @@ export function JobExperienceDiv({ jobExperience, setShowElement }) {
 }
 
 export default function Practical({ jobExperience, setJobExperience }) {
-  const [showElement, setShowElement] = useState(true);
+  const [showElement, setShowElement] = useState(false);
+
+  const handleAddEmployment = () => {
+    alert('add employment');
+  };
 
   return (
     <>
@@ -149,6 +153,14 @@ export default function Practical({ jobExperience, setJobExperience }) {
           jobExperience={jobExperience}
           setShowElement={setShowElement}
         />
+        <div className={styles.addContainer}>
+          <button
+            className={styles.add_employment_btn}
+            onClick={handleAddEmployment}
+          >
+            + Add Employment
+          </button>
+        </div>
       </h1>
     </>
   );

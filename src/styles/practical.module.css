@@ -9,6 +9,7 @@
   margin: 1em;
   padding-left: 0.5em;
   text-align: left;
+  margin-bottom: 0;
 }
 
 .div_line {
@@ -19,7 +20,7 @@
 .job_experience_form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 0.75fr 0.75fr 1.5fr 0.5fr;
+  grid-template-rows: 0.6fr 0.6fr 1.3fr 0.4fr;
   grid-template-areas:
     'role role company company'
     'startDate endDate location location'
@@ -136,4 +137,24 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.add_employment_btn {
+  border: none;
+  font-size: 1.3rem;
+  background-color: white;
+}
+
+.add_employment_btn:hover {
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: gainsboro;
+}
+
+.addContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: none;
 }
