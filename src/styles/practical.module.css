@@ -139,6 +139,16 @@
   cursor: pointer;
 }
 
+.deleteButton {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .add_employment_btn {
   border: none;
   font-size: 1.3rem;

@@ -8,6 +8,7 @@ function JobExperienceForm({
   updateJobExperience,
   handleSubmit,
   handleCancel,
+  handleDelete,
 }) {
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -74,6 +75,13 @@ Write clean, efficient, and well-documented code.'
           onChange={handleChange}
         />
         <div className={styles.buttonContainer}>
+          <button
+            type='button'
+            className={styles.deleteButton}
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
           <button type='submit' className={styles.submitButton}>
             Submit
           </button>
@@ -142,6 +150,25 @@ export default function Practical({ jobExperience, setJobExperience }) {
 
   const handleCancel = (e) => {
     e.preventDefault();
+    const isEmpty = Object.values(tempJob).every(
+      (value) => value.trim() === ''
+    );
+
+    if (isEmpty && editIndex !== null) {
+      setJobExperience((prev) =>
+        prev.filter((_, index) => index !== editIndex)
+      );
+    }
+    setEditIndex(null);
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    if (editIndex !== null) {
+      setJobExperience((prev) =>
+        prev.filter((_, index) => index !== editIndex)
+      );
+    }
     setEditIndex(null);
   };
 
@@ -172,6 +199,7 @@ export default function Practical({ jobExperience, setJobExperience }) {
                 updateJobExperience={updateTempJob}
                 handleSubmit={handleSubmit}
                 handleCancel={handleCancel}
+                handleDelete={handleDelete}
               />
             ) : (
               <JobExperienceDiv
