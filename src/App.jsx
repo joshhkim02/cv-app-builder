@@ -32,8 +32,8 @@ export default function App() {
 
   const [educationExperience, setEducationExperience] = useState([
     {
-      school_name: 'University of California, Irvine',
       degree: 'Bsc. Computer Science',
+      school_name: 'University of California, Irvine',
       start_date: '10/10/2020',
       end_date: '12/01/25',
       school_location: 'Irvine, CA',

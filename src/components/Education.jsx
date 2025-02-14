@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/education.module.css';
 import InputField from './InputField.jsx';
-import { JobExperienceDiv } from './Practical.jsx';
 
 function EducationExperienceForm({
   educationExperience,
@@ -18,21 +17,21 @@ function EducationExperienceForm({
   return (
     <form className={styles.edu_experience_form} onSubmit={handleSubmit}>
       <InputField
-        className={styles.input_label + ' ' + styles.company}
-        type='text'
-        id='school_name'
-        text='School'
-        defaultV='University of California, Irvine'
-        value={educationExperience.school_title}
-        onChange={handleChange}
-      />
-      <InputField
         className={styles.input_label + ' ' + styles.role}
         type='text'
         id='degree'
         text='Degree'
         defaultV='Bsc. Computer Engineering'
         value={educationExperience.degree}
+        onChange={handleChange}
+      />
+      <InputField
+        className={styles.input_label + ' ' + styles.company}
+        type='text'
+        id='school_name'
+        text='School'
+        defaultV='University of California, Irvine'
+        value={educationExperience.school_name}
         onChange={handleChange}
       />
       <InputField
@@ -97,6 +96,32 @@ Relevant Coursework: Data Structures and Algorithms, Object Oriented Programming
         </div>
       </div>
     </form>
+  );
+}
+
+export function EducationExperienceDiv({ educationExperience, handleEdit }) {
+  return (
+    <div className={styles.job_div_container}>
+      <div className={styles.job_holder_container}>
+        <p className={styles.job_experience_p}>
+          {educationExperience.degree} at {''}
+          {educationExperience.school_name}
+        </p>
+        <p>
+          {educationExperience.start_date} - {educationExperience.end_date}
+        </p>
+      </div>
+      <div className={styles.edit_img_container}>
+        <img
+          className='edit_experience_img'
+          src='src/assets/edit_img.png'
+          alt='Edit history button'
+          height='40'
+          width='40'
+          onClick={handleEdit}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -180,8 +205,8 @@ export default function Education({
                 handleDelete={handleDelete}
               />
             ) : (
-              <JobExperienceDiv
-                jobExperience={education}
+              <EducationExperienceDiv
+                educationExperience={education}
                 handleEdit={() => handleEdit(index)}
               />
             )}
