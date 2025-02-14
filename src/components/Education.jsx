@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../styles/education.module.css';
 import InputField from './InputField.jsx';
+import { JobExperienceDiv } from './Practical.jsx';
 
 function EducationExperienceForm({
   educationExperience,
@@ -72,23 +73,128 @@ Relevant Coursework: Data Structures and Algorithms, Object Oriented Programming
         value={educationExperience.school_description}
         onChange={handleChange}
       />
+      <div className={styles.buttonContainer}>
+        <div className={styles.deleteContainer}>
+          <button
+            type='button'
+            className={styles.deleteButton}
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
+        <div className={styles.otherButtonContainer}>
+          <button type='submit' className={styles.submitButton}>
+            Submit
+          </button>
+          <button
+            type='button'
+            className={styles.cancelButton}
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
     </form>
   );
 }
 
-export default function Education() {
+export default function Education({
+  educationExperience,
+  setEducationExperience,
+}) {
+  const [editIndex, setEditIndex] = useState(null);
+  const [tempExp, setTempExp] = useState({});
+
+  const handleEdit = (index) => {
+    setEditIndex(index);
+    setTempExp({ ...educationExperience[index] });
+  };
+
+  const updateTempExp = (updatedFields) => {
+    setTempExp((prev) => ({ ...prev, ...updatedFields }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEducationExperience((prev) => {
+      const newExperience = [...prev];
+      newExperience[editIndex] = { ...tempExp };
+      return newExperience;
+    });
+    setEditIndex(null);
+  };
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    const isEmpty = Object.values(tempExp).every(
+      (value) => value.trim() === ''
+    );
+
+    if (isEmpty && editIndex !== null) {
+      setEducationExperience((prev) =>
+        prev.filter((_, index) => index !== editIndex)
+      );
+    }
+    setEditIndex(null);
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    if (editIndex !== null) {
+      setEducationExperience((prev) =>
+        prev.filter((_, index) => index !== editIndex)
+      );
+    }
+    setEditIndex(null);
+  };
+
+  const handleAddEducation = () => {
+    const newEducation = {
+      school_name: '',
+      degree: '',
+      start_date: '',
+      end_date: '',
+      school_location: '',
+      school_description: '',
+    };
+    setEducationExperience((prev) => [...prev, newEducation]);
+    setEditIndex(educationExperience.length);
+    setTempExp(newEducation);
+  };
+
   return (
     <>
       <h1 className={styles.h1}>
         Education History
         <div className={styles.div_line}></div>
-        <EducationExperienceForm />
-        {/* <JobExperienceDiv
-          role='BSc. Computer Science'
-          company='California State University, Pomona'
-          start='8/1/2020'
-          end='5/1/2024'
-        /> */}
+        {educationExperience.map((education, index) => (
+          <div key={index}>
+            {editIndex === index ? (
+              <EducationExperienceForm
+                educationExperience={tempExp}
+                updateEducationExperience={updateTempExp}
+                handleSubmit={handleSubmit}
+                handleCancel={handleCancel}
+                handleDelete={handleDelete}
+              />
+            ) : (
+              <JobExperienceDiv
+                jobExperience={education}
+                handleEdit={() => handleEdit(index)}
+              />
+            )}
+          </div>
+        ))}
+        <div className={styles.addContainer}>
+          <button
+            className={styles.add_education_btn}
+            onClick={handleAddEducation}
+          >
+            + Add Education
+          </button>
+        </div>
       </h1>
     </>
   );
