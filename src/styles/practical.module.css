@@ -113,10 +113,19 @@
 .buttonContainer {
   grid-column: 1 / -1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 10px;
   padding: 10px 0;
   margin-top: 40px;
+}
+
+.deleteContainer {
+  display: flex;
+}
+
+.otherButtonContainer {
+  display: flex;
+  gap: 10px;
 }
 
 .submitButton {

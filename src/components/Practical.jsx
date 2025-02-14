@@ -75,23 +75,27 @@ Write clean, efficient, and well-documented code.'
           onChange={handleChange}
         />
         <div className={styles.buttonContainer}>
-          <button
-            type='button'
-            className={styles.deleteButton}
-            onClick={handleDelete}
-          >
-            Delete
-          </button>
-          <button type='submit' className={styles.submitButton}>
-            Submit
-          </button>
-          <button
-            type='button'
-            className={styles.cancelButton}
-            onClick={handleCancel}
-          >
-            Cancel
-          </button>
+          <div className={styles.deleteContainer}>
+            <button
+              type='button'
+              className={styles.deleteButton}
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
+          </div>
+          <div className={styles.otherButtonContainer}>
+            <button type='submit' className={styles.submitButton}>
+              Submit
+            </button>
+            <button
+              type='button'
+              className={styles.cancelButton}
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </form>
     </div>
