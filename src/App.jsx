@@ -30,6 +30,17 @@ export default function App() {
     },
   ]);
 
+  const [educationExperience, setEducationExperience] = useState([
+    {
+      school_name: 'University of California, Irvine',
+      degree: 'Bsc. Computer Science',
+      start_date: '10/10/2020',
+      end_date: '12/01/25',
+      school_location: 'Irvine, CA',
+      school_description: 'Honors, Relevant Coursework, GPA',
+    },
+  ]);
+
   return (
     <div className='parent-container'>
       <div className='input-container'>
@@ -42,12 +53,16 @@ export default function App() {
           jobExperience={jobExperience}
           setJobExperience={setJobExperience}
         />
-        <Education />
+        <Education
+          educationExperience={educationExperience}
+          setEducationExperience={setEducationExperience}
+        />
       </div>
       <div className='form-container'>
         <GeneratePDF
           personalDetails={personalDetails}
           jobExperience={jobExperience}
+          educationExperience={educationExperience}
         />
       </div>
     </div>
