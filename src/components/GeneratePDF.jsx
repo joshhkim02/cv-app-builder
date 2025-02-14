@@ -2,7 +2,11 @@
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-export default function GeneratePDF({ personalDetails, jobExperience }) {
+export default function GeneratePDF({
+  personalDetails,
+  jobExperience,
+  educationExperience,
+}) {
   // Download PDF Function
   const exportPDF = () => {
     const input = document.getElementById('resume_page');
@@ -55,6 +59,24 @@ export default function GeneratePDF({ personalDetails, jobExperience }) {
               </p>
               <p>{job.job_location || 'Job Location'}</p>
               <p>{job.job_duties || 'Job Duties'}</p>
+            </div>
+          ))
+        ) : (
+          <p>No job experience available.</p>
+        )}
+
+        {/* Job Experience Details */}
+        {educationExperience && educationExperience.length > 0 ? (
+          educationExperience.map((education, index) => (
+            <div key={index}>
+              <p>{education.degree || 'Degree'}</p>
+              <p>{education.school_name || 'School Name'}</p>
+              <p>
+                {education.start_date || 'Start Date'} -{' '}
+                {education.end_date || 'End Date'}
+              </p>
+              <p>{education.school_location || 'School Location'}</p>
+              <p>{education.school_description || 'School Description'}</p>
             </div>
           ))
         ) : (
