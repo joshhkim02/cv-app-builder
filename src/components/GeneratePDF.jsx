@@ -1,6 +1,7 @@
 // GeneratePDF.jsx
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+// import styles from '../styles/generatePDF.module.css';
 
 export default function GeneratePDF({
   personalDetails,
@@ -37,51 +38,85 @@ export default function GeneratePDF({
         />
       </div>
       <div id='resume_page'>
-        {/* Personal Details */}
-        <p>{personalDetails.firstName || 'First Name'}</p>
-        <p>{personalDetails.lastName || 'Last Name'}</p>
-        <p>{personalDetails.email || 'Email'}</p>
-        <p>{personalDetails.phoneNum || 'Phone Number'}</p>
-        <p>{personalDetails.address || 'Address'}</p>
-        <p>{personalDetails.occupation || 'Occupation'}</p>
-        <p>{personalDetails.linkedin || 'LinkedIn'}</p>
-        <p>{personalDetails.portfolio || 'Portfolio'}</p>
-        <p>{personalDetails.about || 'About'}</p>
+        <div className='left-container'>
+          <div className='picture-container'></div>
+          <h2>Contact</h2>
+          <div className='div_line'></div>
+          <h3>Email</h3>
+          <p>{personalDetails.email || 'JohnDoe@gmail.com'}</p>
+          <h3>Phone Number</h3>
+          <p>{personalDetails.phoneNum || '123-456-7890'}</p>
+          <h3>Address</h3>
+          <p>{personalDetails.address || 'Hollywood, California'}</p>
+          <h3>LinkedIn</h3>
+          <p>
+            {personalDetails.linkedin || 'https://www.linkedin.com/in/johndoe'}
+          </p>
+          <h3>Portfolio</h3>
+          <p>{personalDetails.portfolio || 'https://www.github.com/johndoe'}</p>
+        </div>
+        <div className='right-container'>
+          <h1>
+            {personalDetails.firstName || 'John'}{' '}
+            {personalDetails.lastName || 'Doe'}
+          </h1>
+          <h2>{personalDetails.occupation || 'Software Developer'}</h2>
+          <div className='div_line'></div>
+          <p>
+            {personalDetails.about ||
+              'Highly motivated and results-oriented Web Developer with 4 years of experience in building user-friendly and responsive web applications. Proven ability to design, develop, and implement web applications using a variety of programming languages and frameworks. Passionate about creating innovative and performant web experiences.'}
+          </p>
+          <br></br>
+          <h2>Experience</h2>
+          <div className='div_line'></div>
+          {jobExperience && jobExperience.length > 0 ? (
+            jobExperience.map((job, index) => (
+              <div key={index}>
+                <p>{job.job_title || 'Job Title'}</p>
+                <p>{job.company_name || 'Company Name'}</p>
+                <p>
+                  {job.start_date || 'Start Date'} -{' '}
+                  {job.end_date || 'End Date'}
+                </p>
+                <p>{job.job_location || 'Job Location'}</p>
+                <p>{job.job_duties || 'Job Duties'}</p>
+              </div>
+            ))
+          ) : (
+            <p>No job experience available.</p>
+          )}
+          <br></br>
+          <h2>Education</h2>
+          <div className='div_line'></div>
+          {educationExperience && educationExperience.length > 0 ? (
+            educationExperience.map((education, index) => (
+              <div key={index}>
+                <div className='education_div'>
+                  <div className='holder'>
+                    {' '}
+                    <div className='left_education'>
+                      {' '}
+                      <p>{education.school_name || 'School Name'}</p>
+                      <p>{education.degree || 'Degree'}</p>
+                    </div>
+                    <div className='right_education'>
+                      {' '}
+                      <p>
+                        {education.start_date || 'Start Date'} -{' '}
+                        {education.end_date || 'End Date'}
+                      </p>
+                      <p>{education.school_location || 'School Location'}</p>
+                    </div>
+                  </div>
 
-        {/* Job Experience Details */}
-        {jobExperience && jobExperience.length > 0 ? (
-          jobExperience.map((job, index) => (
-            <div key={index}>
-              <p>{job.job_title || 'Job Title'}</p>
-              <p>{job.company_name || 'Company Name'}</p>
-              <p>
-                {job.start_date || 'Start Date'} - {job.end_date || 'End Date'}
-              </p>
-              <p>{job.job_location || 'Job Location'}</p>
-              <p>{job.job_duties || 'Job Duties'}</p>
-            </div>
-          ))
-        ) : (
-          <p>No job experience available.</p>
-        )}
-
-        {/* Job Experience Details */}
-        {educationExperience && educationExperience.length > 0 ? (
-          educationExperience.map((education, index) => (
-            <div key={index}>
-              <p>{education.degree || 'Degree'}</p>
-              <p>{education.school_name || 'School Name'}</p>
-              <p>
-                {education.start_date || 'Start Date'} -{' '}
-                {education.end_date || 'End Date'}
-              </p>
-              <p>{education.school_location || 'School Location'}</p>
-              <p>{education.school_description || 'School Description'}</p>
-            </div>
-          ))
-        ) : (
-          <p>No job experience available.</p>
-        )}
+                  <p>{education.school_description || 'School Description'}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>No education experience available.</p>
+          )}
+        </div>
       </div>
     </div>
   );

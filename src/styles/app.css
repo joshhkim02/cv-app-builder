@@ -24,12 +24,56 @@
 
 #resume_page {
   background-color: rgb(255, 255, 255);
-  height: 90vh;
+  height: 100vh;
   width: 45%;
   grid-area: resume;
   top: 50%;
   left: 50%;
   transform: translate(5.5%, 3%);
+  display: flex;
+  gap: 10px;
+}
+
+.div_line {
+  border: 1px solid gray;
+  height: 1px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  padding: 10px;
+  background-color: rgb(36, 36, 36);
+  color: white;
+}
+
+.left-container h3 {
+  font-size: 1.1rem;
+}
+
+.left-container p {
+  font-size: 0.7rem;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 65;
+  padding: 10px;
+}
+
+.right-container h1 {
+  font-size: 3rem;
+}
+
+.right-container h2 {
+  font-size: 1.3rem;
+}
+.right-container p {
+  font-size: 0.8rem;
 }
 
 .download_resume:hover {
@@ -42,4 +86,29 @@
 
 .edit_experience_img:hover {
   cursor: pointer;
+}
+
+.holder {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.education_div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.left_education {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.right_education {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-end;
 }
