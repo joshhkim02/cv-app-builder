@@ -19,10 +19,10 @@ function EducationExperienceForm({
       <InputField
         className={styles.input_label + ' ' + styles.role}
         type='text'
-        id='degree'
+        id='degree_name'
         text='Degree'
         defaultV='Bsc. Computer Engineering'
-        value={educationExperience.degree}
+        value={educationExperience.degree_name}
         onChange={handleChange}
       />
       <InputField
@@ -72,23 +72,23 @@ Relevant Coursework: Data Structures and Algorithms, Object Oriented Programming
         value={educationExperience.school_description}
         onChange={handleChange}
       />
-      <div className={styles.buttonContainer}>
-        <div className={styles.deleteContainer}>
+      <div className={styles.button_container}>
+        <div className={styles.delete_container}>
           <button
             type='button'
-            className={styles.deleteButton}
+            className={styles.delete_button}
             onClick={handleDelete}
           >
             Delete
           </button>
         </div>
-        <div className={styles.otherButtonContainer}>
-          <button type='submit' className={styles.submitButton}>
+        <div className={styles.submit_cancel_container}>
+          <button type='submit' className={styles.submit_button}>
             Submit
           </button>
           <button
             type='button'
-            className={styles.cancelButton}
+            className={styles.cancel_button}
             onClick={handleCancel}
           >
             Cancel
@@ -104,7 +104,7 @@ export function EducationExperienceDiv({ educationExperience, handleEdit }) {
     <div className={styles.job_div_container}>
       <div className={styles.job_holder_container}>
         <p className={styles.job_experience_p}>
-          {educationExperience.degree} at {''}
+          {educationExperience.degree_name} at {''}
           {educationExperience.school_name}
         </p>
         <p>
@@ -178,7 +178,7 @@ export default function Education({
   const handleAddEducation = () => {
     const newEducation = {
       school_name: '',
-      degree: '',
+      degree_name: '',
       start_date: '',
       end_date: '',
       school_location: '',
@@ -212,7 +212,7 @@ export default function Education({
             )}
           </div>
         ))}
-        <div className={styles.addContainer}>
+        <div className={styles.add_container}>
           <button
             className={styles.add_education_btn}
             onClick={handleAddEducation}

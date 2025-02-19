@@ -108,7 +108,7 @@
   flex-grow: 1;
 }
 
-.buttonContainer {
+.button_container {
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
@@ -117,16 +117,16 @@
   margin-top: 40px;
 }
 
-.deleteContainer {
+.delete_container {
   display: flex;
 }
 
-.otherButtonContainer {
+.submit_cancel_container {
   display: flex;
   gap: 10px;
 }
 
-.submitButton {
+.submit_button {
   padding: 5px 10px;
   font-size: 1.2rem;
   background-color: #007bff;
@@ -136,7 +136,7 @@
   cursor: pointer;
 }
 
-.cancelButton {
+.cancel_button {
   padding: 5px 10px;
   font-size: 1.2rem;
   background-color: #6c757d;
@@ -146,7 +146,7 @@
   cursor: pointer;
 }
 
-.deleteButton {
+.delete_button {
   padding: 5px 10px;
   font-size: 1.2rem;
   background-color: #6c757d;
@@ -168,7 +168,7 @@
   background-color: gainsboro;
 }
 
-.addContainer {
+.add_container {
   display: flex;
   justify-content: center;
   align-items: center;

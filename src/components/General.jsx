@@ -12,26 +12,26 @@ export default function General({ personalDetails, setPersonalDetails }) {
 
   return (
     <>
-      <h1 className={styles.h1}>
+      <h1 className={styles.general_h1}>
         Personal Details
         <div className={styles.div_line}></div>
         <form className={styles.general_form}>
           <InputField
             className={styles.input_label}
             type='text'
-            id='firstName'
+            id='first_name'
             text='First Name'
             defaultV='John'
-            value={personalDetails.firstName}
+            value={personalDetails.first_name}
             onChange={handleChange}
           />
           <InputField
             className={styles.input_label}
             type='text'
-            id='lastName'
+            id='last_name'
             text='Last Name'
             defaultV='Doe'
-            value={personalDetails.lastName}
+            value={personalDetails.last_name}
             onChange={handleChange}
           />
           <InputField
@@ -46,10 +46,10 @@ export default function General({ personalDetails, setPersonalDetails }) {
           <InputField
             className={styles.input_label}
             type='text'
-            id='phoneNum'
+            id='phone_num'
             text='Phone Number'
             defaultV='123-456-7890'
-            value={personalDetails.phoneNum}
+            value={personalDetails.phone_num}
             onChange={handleChange}
           />
           <InputField
@@ -97,14 +97,6 @@ export default function General({ personalDetails, setPersonalDetails }) {
             value={personalDetails.about}
             onChange={handleChange}
           />
-          <div className={styles.input_file}>
-            <InputField
-              className={styles.input_label}
-              type='file'
-              id='profile_picture'
-              text='Profile Picture'
-            />
-          </div>
         </form>
       </h1>
     </>

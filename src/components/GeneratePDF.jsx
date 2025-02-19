@@ -39,8 +39,7 @@ export default function GeneratePDF({
         />
       </div>
       <div id='resume_page'>
-        <div className='left-container'>
-          <div className='picture-container'></div>
+        <div className='left_container'>
           <h2>Contact</h2>
           <div className='div_line'></div>
           <h3>Email</h3>
@@ -56,7 +55,7 @@ export default function GeneratePDF({
           <h3>Portfolio</h3>
           <p>{personalDetails.portfolio || 'https://www.github.com/johndoe'}</p>
         </div>
-        <div className='right-container'>
+        <div className='right_container'>
           <h1>
             {personalDetails.firstName || 'John'}{' '}
             {personalDetails.lastName || 'Doe'}
@@ -77,15 +76,21 @@ export default function GeneratePDF({
                   <div className='holder'>
                     {' '}
                     <div className='left_education'>
-                      <p>{job.job_title || 'Job Title'}</p>
-                      <p>{job.company_name || 'Company Name'}</p>
+                      <p className='p_important'>
+                        {job.job_title || 'Job Title'}
+                      </p>
+                      <p className='p_important'>
+                        {job.company_name || 'Company Name'}
+                      </p>
                     </div>
                     <div className='right_education'>
-                      <p>
+                      <p className='p_important'>
                         {job.start_date || 'Start Date'} -{' '}
                         {job.end_date || 'End Date'}
                       </p>
-                      <p>{job.job_location || 'Job Location'}</p>
+                      <p className='p_important'>
+                        {job.job_location || 'Job Location'}
+                      </p>
                     </div>
                   </div>
                   <p>{job.job_duties || 'Job Duties'}</p>
@@ -107,16 +112,22 @@ export default function GeneratePDF({
                     {' '}
                     <div className='left_education'>
                       {' '}
-                      <p>{education.school_name || 'School Name'}</p>
-                      <p>{education.degree || 'Degree'}</p>
+                      <p className='p_important'>
+                        {education.school_name || 'School Name'}
+                      </p>
+                      <p className='p_important'>
+                        {education.degree_name || 'Degree'}
+                      </p>
                     </div>
                     <div className='right_education'>
                       {' '}
-                      <p>
+                      <p className='p_important'>
                         {education.start_date || 'Start Date'} -{' '}
                         {education.end_date || 'End Date'}
                       </p>
-                      <p>{education.school_location || 'School Location'}</p>
+                      <p className='p_important'>
+                        {education.school_location || 'School Location'}
+                      </p>
                     </div>
                   </div>
 

@@ -8,10 +8,10 @@ import './styles/app.css';
 
 export default function App() {
   const [personalDetails, setPersonalDetails] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
-    phoneNum: '',
+    phone_num: '',
     address: '',
     occupation: '',
     linkedin: '',
@@ -33,7 +33,7 @@ export default function App() {
 
   const [educationExperience, setEducationExperience] = useState([
     {
-      degree: 'Bsc. Computer Science',
+      degree_name: 'Bsc. Computer Science',
       school_name: 'University of California, Irvine',
       start_date: '10/10/2020',
       end_date: '12/01/24',

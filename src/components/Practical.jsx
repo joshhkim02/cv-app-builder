@@ -74,23 +74,23 @@ Write clean, efficient, and well-documented code.'
           value={jobExperience.job_duties}
           onChange={handleChange}
         />
-        <div className={styles.buttonContainer}>
-          <div className={styles.deleteContainer}>
+        <div className={styles.button_container}>
+          <div className={styles.delete_container}>
             <button
               type='button'
-              className={styles.deleteButton}
+              className={styles.delete_button}
               onClick={handleDelete}
             >
               Delete
             </button>
           </div>
-          <div className={styles.otherButtonContainer}>
-            <button type='submit' className={styles.submitButton}>
+          <div className={styles.submit_cancel_container}>
+            <button type='submit' className={styles.submit_button}>
               Submit
             </button>
             <button
               type='button'
-              className={styles.cancelButton}
+              className={styles.cancel_button}
               onClick={handleCancel}
             >
               Cancel
@@ -213,7 +213,7 @@ export default function Practical({ jobExperience, setJobExperience }) {
             )}
           </div>
         ))}
-        <div className={styles.addContainer}>
+        <div className={styles.add_container}>
           <button
             className={styles.add_employment_btn}
             onClick={handleAddEmployment}
