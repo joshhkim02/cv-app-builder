@@ -44,7 +44,7 @@
 .left-container {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 30%;
   padding: 10px;
   background-color: rgb(36, 36, 36);
   color: white;
@@ -61,12 +61,13 @@
 .right-container {
   display: flex;
   flex-direction: column;
-  width: 65;
+  width: 70%;
   padding: 10px;
 }
 
 .right-container h1 {
   font-size: 3rem;
+  margin-bottom: 10px;
 }
 
 .right-container h2 {
@@ -98,7 +99,20 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+  margin-bottom: 10px;
+  /* padding-left: 10px; */
 }
+
+/* .education_border_container {
+  display: flex;
+}
+
+.border-left {
+  border-left: 1px solid black;
+  height: 50%;
+  top: 50%;
+  bottom: 0%;
+} */
 
 .left_education {
   display: flex;

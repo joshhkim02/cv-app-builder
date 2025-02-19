@@ -93,7 +93,7 @@ export default function General({ personalDetails, setPersonalDetails }) {
             type='textarea'
             id='about'
             text='About'
-            defaultV='E.g.: Motivated developer with multiple years of experience at FAANG companies...'
+            defaultV='Passionate and detail-oriented Software Engineer with hands-on experience in developing scalable, efficient solutions. Proficient in Python, Java, C#, and modern web technologies. Eager to apply technical expertise and problem-solving skills in a dynamic, innovative team environment.'
             value={personalDetails.about}
             onChange={handleChange}
           />

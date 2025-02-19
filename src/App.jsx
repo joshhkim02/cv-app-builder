@@ -26,7 +26,8 @@ export default function App() {
       start_date: '10/10/2020',
       end_date: '7/1/2024',
       job_location: 'San Jose, California',
-      job_duties: 'Code',
+      job_duties:
+        'Design, write, test, and maintain clean and efficient code for software applications. Develop new features and enhance existing functionality based on user requirements. Work closely with cross-functional teams, including product managers, designers, and QA engineers, to understand project needs and deliver high-quality software solutions.',
     },
   ]);
 
@@ -35,9 +36,10 @@ export default function App() {
       degree: 'Bsc. Computer Science',
       school_name: 'University of California, Irvine',
       start_date: '10/10/2020',
-      end_date: '12/01/25',
+      end_date: '12/01/24',
       school_location: 'Irvine, CA',
-      school_description: 'Honors, Relevant Coursework, GPA',
+      school_description:
+        'Honors: Summa Cum Laude (GPA: 4.00), Presidents List (2020-2024), Dean’s List (2020-2024)',
     },
   ]);
 

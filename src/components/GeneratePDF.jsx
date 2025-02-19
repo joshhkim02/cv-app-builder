@@ -1,7 +1,6 @@
 // GeneratePDF.jsx
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-// import styles from '../styles/generatePDF.module.css';
 
 export default function GeneratePDF({
   personalDetails,
@@ -11,15 +10,17 @@ export default function GeneratePDF({
   // Download PDF Function
   const exportPDF = () => {
     const input = document.getElementById('resume_page');
+
     html2canvas(input, {
+      scale: 2, // Increase resolution
       logging: true,
       letterRendering: 1,
       useCORS: true,
     }).then((canvas) => {
-      const pdfWidth = 175;
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      const imgData = canvas.toDataURL('img/png');
+      const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save('resume.pdf');
     });
@@ -64,7 +65,7 @@ export default function GeneratePDF({
           <div className='div_line'></div>
           <p>
             {personalDetails.about ||
-              'Highly motivated and results-oriented Web Developer with 4 years of experience in building user-friendly and responsive web applications. Proven ability to design, develop, and implement web applications using a variety of programming languages and frameworks. Passionate about creating innovative and performant web experiences.'}
+              'Passionate and detail-oriented Software Engineer with hands-on experience in developing scalable, efficient solutions. Proficient in Python, Java, C#, and modern web technologies. Eager to apply technical expertise and problem-solving skills in a dynamic, innovative team environment.'}
           </p>
           <br></br>
           <h2>Experience</h2>
@@ -72,14 +73,23 @@ export default function GeneratePDF({
           {jobExperience && jobExperience.length > 0 ? (
             jobExperience.map((job, index) => (
               <div key={index}>
-                <p>{job.job_title || 'Job Title'}</p>
-                <p>{job.company_name || 'Company Name'}</p>
-                <p>
-                  {job.start_date || 'Start Date'} -{' '}
-                  {job.end_date || 'End Date'}
-                </p>
-                <p>{job.job_location || 'Job Location'}</p>
-                <p>{job.job_duties || 'Job Duties'}</p>
+                <div className='education_div'>
+                  <div className='holder'>
+                    {' '}
+                    <div className='left_education'>
+                      <p>{job.job_title || 'Job Title'}</p>
+                      <p>{job.company_name || 'Company Name'}</p>
+                    </div>
+                    <div className='right_education'>
+                      <p>
+                        {job.start_date || 'Start Date'} -{' '}
+                        {job.end_date || 'End Date'}
+                      </p>
+                      <p>{job.job_location || 'Job Location'}</p>
+                    </div>
+                  </div>
+                  <p>{job.job_duties || 'Job Duties'}</p>
+                </div>
               </div>
             ))
           ) : (
@@ -90,7 +100,8 @@ export default function GeneratePDF({
           <div className='div_line'></div>
           {educationExperience && educationExperience.length > 0 ? (
             educationExperience.map((education, index) => (
-              <div key={index}>
+              <div className='education_border_container ' key={index}>
+                <div className='border-left'></div>
                 <div className='education_div'>
                   <div className='holder'>
                     {' '}
