@@ -114,7 +114,7 @@ export function EducationExperienceDiv({ educationExperience, handleEdit }) {
       <div className={styles.edit_img_container}>
         <img
           className='edit_experience_img'
-          src='src/assets/edit_img.png'
+          src='/assets/edit_img.png'
           alt='Edit history button'
           height='40'
           width='40'

@@ -31,7 +31,7 @@ export default function GeneratePDF({
       <div className='pdf_navbar'>
         <img
           className='download_resume'
-          src='src/assets/download_icon.png'
+          src='/assets/download_icon.png'
           alt='Download resume button'
           height='30'
           width='30'
