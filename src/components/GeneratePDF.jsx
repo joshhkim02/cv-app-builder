@@ -45,7 +45,7 @@ export default function GeneratePDF({
           <h3>Email</h3>
           <p>{personalDetails.email || 'JohnDoe@gmail.com'}</p>
           <h3>Phone Number</h3>
-          <p>{personalDetails.phoneNum || '123-456-7890'}</p>
+          <p>{personalDetails.phone_num || '123-456-7890'}</p>
           <h3>Address</h3>
           <p>{personalDetails.address || 'Hollywood, California'}</p>
           <h3>LinkedIn</h3>
@@ -57,8 +57,8 @@ export default function GeneratePDF({
         </div>
         <div className='right_container'>
           <h1>
-            {personalDetails.firstName || 'John'}{' '}
-            {personalDetails.lastName || 'Doe'}
+            {personalDetails.first_name || 'John'}{' '}
+            {personalDetails.last_name || 'Doe'}
           </h1>
           <h2>{personalDetails.occupation || 'Software Developer'}</h2>
           <div className='div_line'></div>
